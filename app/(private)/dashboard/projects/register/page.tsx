@@ -1,7 +1,5 @@
 'use client'
 
-import { KindeUser } from '@kinde-oss/kinde-auth-nextjs/types'
-import { ProjectProps } from '../components/table'
 import useProjectController from '../form-controller'
 import { useEffect } from 'react'
 import { Input } from '@/components/input'
@@ -26,6 +24,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { ProjectProps } from '../components/table'
+import { KindeUser } from '@kinde-oss/kinde-auth-nextjs/types'
 
 interface RegisterProjectProps {
   data: ProjectProps | null
@@ -33,16 +33,8 @@ interface RegisterProjectProps {
 }
 
 export default function RegisterProject({ data, user }: RegisterProjectProps) {
-  const {
-    handleSubmit,
-    register,
-    errors,
-    control,
-    reset,
-    loading,
-    setTypeSendForm,
-    setUser,
-  } = useProjectController()
+  const { handleSubmit, register, errors, control, reset, loading, setUser } =
+    useProjectController()
 
   useEffect(() => {
     setUser(user)
