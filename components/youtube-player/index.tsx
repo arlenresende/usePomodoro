@@ -1,6 +1,6 @@
 'use client'
 
-import { VolumeX } from 'lucide-react'
+import { Volume, VolumeX } from 'lucide-react'
 
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import YouTube, {
@@ -19,6 +19,7 @@ export default function YouTubePlayer({ isHome }: Props) {
   const [videoId, setVideoId] = useState<string | null>('4ifP3Fd8vJk')
   const playerRef = useRef<YouTubePlayerType | null>(null)
   const { isActive, isBreak, activePlay } = useContext(TimeContext)
+  const [isPlaying, setIsPlaying] = useState(true)
 
   const extractVideoId = (url: string): string | null => {
     const regex =
@@ -53,9 +54,17 @@ export default function YouTubePlayer({ isHome }: Props) {
     }
   }, [isActive, videoId, isBreak, activePlay])
 
-  const handlePause = () => {
+  const handleMute = () => {
     if (playerRef.current) {
       playerRef.current.pauseVideo()
+      setIsPlaying(false)
+    }
+  }
+
+  const handlePlay = () => {
+    if (playerRef.current) {
+      playerRef.current.playVideo()
+      setIsPlaying(true)
     }
   }
 
@@ -77,9 +86,19 @@ export default function YouTubePlayer({ isHome }: Props) {
               className="py-5 lg:py-6 text-sm lg:text-base"
               onChange={handleInputChange}
             />
-            <Button>
-              <VolumeX size={24} className="text-white" onClick={handlePause} />
-            </Button>
+            {isPlaying ? (
+              <Button>
+                <VolumeX
+                  size={24}
+                  className="text-white"
+                  onClick={handleMute}
+                />
+              </Button>
+            ) : (
+              <Button>
+                <Volume size={24} className="text-white" onClick={handlePlay} />
+              </Button>
+            )}
           </div>
         </>
       )}
