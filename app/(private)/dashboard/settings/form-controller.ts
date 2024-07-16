@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { PostData } from '@/app/actions/updateUser'
 import { useState } from 'react'
+import { useToast } from '@/components/ui/use-toast'
 
 const schema = z.object({
   id: z.string(),
@@ -19,6 +20,7 @@ type FormData = z.infer<typeof schema>
 
 export default function useSettingsController() {
   const [loading, setLoading] = useState(false)
+  const { toast } = useToast()
   const {
     handleSubmit: hookFormHandleSubmit,
     register,
@@ -35,7 +37,17 @@ export default function useSettingsController() {
       if (userUpdate) {
         setLoading(false)
       }
+      toast({
+        title: 'Parabéns! ',
+        description: ' Configurações editadas com sucesso',
+        className: 'bg-green-700',
+      })
     } catch (error) {
+      toast({
+        title: 'Ops! ',
+        description: ' Ocorreu um erro ao editar as configurações',
+        className: 'bg-red-700',
+      })
     } finally {
       setLoading(false)
     }

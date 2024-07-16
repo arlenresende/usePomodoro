@@ -17,7 +17,7 @@ import FormModalProject from '../formModalProject'
 import { KindeUser } from '@kinde-oss/kinde-auth-nextjs/types'
 import { deleteDataProject } from '@/app/actions/deleteProject'
 import Link from 'next/link'
-
+import { useToast } from '@/components/ui/use-toast'
 export interface ProjectProps {
   id: string
   name: string
@@ -39,6 +39,7 @@ export interface DataProjectProps {
 export default function TableProject({ data, user }: DataProjectProps) {
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
+  const { toast } = useToast()
   const [dataModal, setDataModal] = useState<ProjectProps | null>(null)
 
   function handleModalProject(id?: string) {
@@ -53,6 +54,11 @@ export default function TableProject({ data, user }: DataProjectProps) {
     setLoading(true)
     try {
       await deleteDataProject(id, user)
+      toast({
+        title: 'Parabéns! ',
+        description: ' Projeto deletado com sucesso',
+        className: 'bg-red-700',
+      })
       setLoading(false)
     } catch (error) {}
   }

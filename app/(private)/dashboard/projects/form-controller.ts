@@ -2,7 +2,7 @@
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-
+import { useToast } from '@/components/ui/use-toast'
 import { useState } from 'react'
 import { postDataProject } from '@/app/actions/createProject'
 import { editDataProject } from '@/app/actions/updateProject'
@@ -20,6 +20,7 @@ type FormData = z.infer<typeof schema>
 
 export default function useProjectController() {
   const [loading, setLoading] = useState(false)
+  const { toast } = useToast()
   const [typeSendForm, setTypeSendForm] = useState<'create' | 'update'>(
     'create',
   )
@@ -42,7 +43,17 @@ export default function useProjectController() {
         if (registerProject) {
           setLoading(false)
         }
+        toast({
+          title: 'Parabéns! ',
+          description: ' Projeto criado com sucesso',
+          className: 'bg-green-700',
+        })
       } catch (error) {
+        toast({
+          title: 'Ops',
+          description: 'Não foi possiível criar o projeto',
+          className: 'bg-red-700',
+        })
       } finally {
         setLoading(false)
       }
@@ -53,7 +64,17 @@ export default function useProjectController() {
         if (editProject) {
           setLoading(false)
         }
+        toast({
+          title: 'Parabéns',
+          description: ' Projeto editado com sucesso',
+          className: 'bg-green-700',
+        })
       } catch (error) {
+        toast({
+          title: 'Ops',
+          description: 'Não foi possiível editar o projeto',
+          className: 'bg-red-700',
+        })
       } finally {
         setLoading(false)
       }

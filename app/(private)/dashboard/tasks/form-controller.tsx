@@ -2,7 +2,7 @@
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-
+import { useToast } from '@/components/ui/use-toast'
 import { useState } from 'react'
 import { KindeUser } from '@kinde-oss/kinde-auth-nextjs/types'
 import { postDataTask } from '@/app/actions/createTask'
@@ -21,6 +21,7 @@ type FormData = z.infer<typeof schema>
 
 export default function useTaskController() {
   const router = useRouter()
+  const { toast } = useToast()
   const [loading, setLoading] = useState(false)
   const [user, setUser] = useState<KindeUser | null>(null)
   const {
@@ -46,6 +47,11 @@ export default function useTaskController() {
       if (registerProject) {
         setLoading(false)
       }
+      toast({
+        title: 'Parabéns! ',
+        description: ' Tarefa criada com sucesso',
+        className: 'bg-green-700',
+      })
       router.push('/dashboard')
     } catch (error) {
     } finally {

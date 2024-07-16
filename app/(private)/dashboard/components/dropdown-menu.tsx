@@ -9,7 +9,7 @@ import { useState } from 'react'
 import DeleteTaskId from './delete-task'
 import { TaskProps } from '@/app/actions/createTask'
 import UpdateDeleteTask from './updateCompleteTask'
-
+import { useToast } from '@/components/ui/use-toast'
 interface ModalViewProps {
   id: string | undefined
   data: TaskProps
@@ -18,11 +18,16 @@ interface ModalViewProps {
 export default function ModalView({ id, data }: ModalViewProps) {
   const [loading, setLoading] = useState(false)
   const [loadingStatus, setLoadingStatus] = useState(false)
-
+  const { toast } = useToast()
   async function handleDeleteProject(id: string) {
     setLoading(true)
     try {
       await DeleteTaskId(id)
+      toast({
+        title: 'Parabéns! ',
+        description: ' Tarefa deletada com sucesso',
+        className: 'bg-red-700',
+      })
       setLoading(false)
     } catch (error) {}
   }
@@ -35,6 +40,11 @@ export default function ModalView({ id, data }: ModalViewProps) {
       }
       await UpdateDeleteTask(updatedTask, id)
       setLoadingStatus(false)
+      toast({
+        title: 'Parabéns! ',
+        description: ' Tarefa Finalizado com sucesso',
+        className: 'bg-green-700',
+      })
     } catch (error) {}
   }
 
