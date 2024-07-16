@@ -65,6 +65,31 @@ async function getDataUser({
   }
 }
 
+async function createDefaultProject(userId: string) {
+  noStore()
+  const projects = await prisma.project.findMany({
+    where: {
+      userId,
+    },
+    select: {
+      name: true,
+      id: true,
+    },
+  })
+
+  if (!projects || projects.length === 0) {
+    const result = await prisma.project.create({
+      data: {
+        name: 'default',
+        description: '',
+        palletColor: '#fff',
+        status: 'active',
+        userId,
+      },
+    })
+    return result
+  }
+}
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -76,6 +101,8 @@ export default async function RootLayout({
   if (!user) {
     redirect('/')
   }
+
+  await createDefaultProject(user.id as string)
 
   await getDataUser({
     email: user.email as string,
