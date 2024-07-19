@@ -1,10 +1,11 @@
 import YouTubePlayer from '@/components/youtube-player'
-import { Task, columns } from './components/columns'
-import { DataTable } from './components/data-table'
+
 import prisma from '@/lib/db'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import Table from '../components/table'
+import { Task } from './components/columns'
 
 async function getData(userId: string): Promise<Task[]> {
   const data = await prisma.task.findMany({
@@ -39,11 +40,12 @@ export default async function Dashboard() {
   const { getUser } = getKindeServerSession()
   const user = await getUser()
   const data = await getData(user?.id as string)
+
   return (
     <div className=" ">
       {data && data.length > 0 ? (
         <>
-          <DataTable columns={columns} data={data} />
+          <Table data={data} />
           <YouTubePlayer isHome={false} />
         </>
       ) : (

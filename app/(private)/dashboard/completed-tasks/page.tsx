@@ -1,10 +1,11 @@
 import prisma from '@/lib/db'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
-import { DataTable } from '../components/data-table'
+
 import { Task } from '../components/columns'
-import { columnsCompleted } from '../components/columnsCompleted'
+
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import Table from '../../components/table'
 
 async function getData(userId: string): Promise<Task[]> {
   const data = await prisma.task.findMany({
@@ -43,11 +44,7 @@ export default async function CompletedTasks() {
     <div className=" ">
       {data && data.length > 0 ? (
         <>
-          <DataTable
-            columns={columnsCompleted}
-            data={data}
-            isCompleted={true}
-          />
+          <Table data={data} isCompleted />
         </>
       ) : (
         <div className="flex flex-col items-center justify-center gap-4 mt-12">

@@ -9,7 +9,7 @@ export default function CardNumber({ time }: CardNumberProps) {
     <>
       <Button
         variant="outline"
-        className="text-4xl sm:text-9xl lg:text-[160px] py-8 sm:py-16 lg:py-28 px-4 lg:px-8 min-w-[58px] lg:min-w-[170px]"
+        className="text-6xl sm:text-9xl lg:text-[160px] py-10 sm:py-16 lg:py-28 px-4 lg:px-8 min-w-[120px] lg:min-w-[170px]"
       >
         {time}
       </Button>

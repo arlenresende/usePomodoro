@@ -17,7 +17,7 @@ export default function HomePage() {
       <Header />
       <div className=" mx-auto flex flex-col gap-8">
         <div className="  mx-auto w-full flex items-end justify-end  "></div>
-        <div className="flex gap-3 lg:gap-6 items-center justify-center w-auto">
+        <div className="flex flex-col lg:flex-row gap-1 lg:gap-6 items-center justify-center w-auto">
           <Countdown />
         </div>
         <div className="max-w-3xl mx-auto w-full flex flex-col gap-4">
