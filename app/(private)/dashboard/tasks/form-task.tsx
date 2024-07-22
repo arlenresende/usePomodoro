@@ -100,13 +100,13 @@ export default function FormTask({ user, data }: ModalTaskProps) {
                   <Controller
                     name="status"
                     control={control}
-                    defaultValue={'inProgress'}
+                    defaultValue={'todo'}
                     render={({
                       field: { name, onChange, value, disabled },
                     }) => {
                       return (
                         <Select
-                          defaultValue={'inProgress'}
+                          defaultValue={'todo'}
                           name={name}
                           onValueChange={onChange}
                           value={value}

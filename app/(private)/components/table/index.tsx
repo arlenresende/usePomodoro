@@ -71,7 +71,7 @@ export default function Table({ data, isCompleted }: TableProps) {
           {currentData.map((task) => (
             <div
               key={task.id}
-              className={`grid grid-cols-1 lg:grid-cols-7 items-start lg:items-center p-4 border-t border-muted hover:bg-primary-foreground ${task.status === 'inProgress' && 'bg-primary-foreground'}`}
+              className={`grid grid-cols-1 lg:grid-cols-7 items-start lg:items-center p-4 border-t border-muted hover:bg-muted  ${task.status === 'inProgress' && ' bg-muted '}`}
             >
               <div className="flex flex-col items-start justify-start gap-4 lg:gap-2 lg:col-span-2">
                 <div className="flex gap-2 items-center justify-start w-full">
