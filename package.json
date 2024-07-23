@@ -36,6 +36,7 @@
     "react-dom": "^18",
     "react-draft-wysiwyg": "^1.15.0",
     "react-hook-form": "^7.51.5",
+    "react-quill": "^2.0.0",
     "react-youtube": "^10.1.0",
     "stripe": "^15.9.0",
     "tailwind-merge": "^2.3.0",

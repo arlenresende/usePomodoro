@@ -77,17 +77,24 @@ export default async function Billing() {
               <span className="text-6xl ">R$9,90</span>
               <span className="text-2xl text-muted-foreground">/mês</span>
             </CardTitle>
-            <CardDescription>You have 3 unread messages.</CardDescription>
+            <CardDescription>
+              Bem-vindo à página de assinaturas do UsePomodoro! Aqui, você pode
+              descobrir as vantagens incríveis de se tornar um assinante premium
+              do nosso gestor de tarefas. Aumente sua produtividade, organize
+              melhor seu tempo e alcance seus objetivos com mais eficiência
+            </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className=" flex items-center space-x-4 rounded-md border p-4">
               <BellRing />
               <div className="flex-1 space-y-1">
                 <p className="text-sm font-medium leading-none">
-                  Push Notifications
+                  Organização Avançada com Categorias Ilimitadas
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  Send notifications to device.
+                  Crie categorias específicas para diferentes áreas do seu
+                  trabalho e vida pessoal - Organize suas tarefas em categorias
+                  por prioridade, tipo de projeto, ou qualquer outro critério
                 </p>
               </div>
             </div>
@@ -95,21 +102,11 @@ export default async function Billing() {
               <BellRing />
               <div className="flex-1 space-y-1">
                 <p className="text-sm font-medium leading-none">
-                  Push Notifications
+                  Suporte Prioritário e Recursos Exclusivos
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  Send notifications to device.
-                </p>
-              </div>
-            </div>
-            <div className=" flex items-center space-x-4 rounded-md border p-4">
-              <BellRing />
-              <div className="flex-1 space-y-1">
-                <p className="text-sm font-medium leading-none">
-                  Push Notifications
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Send notifications to device.
+                  Suporte prioritário via chat e email - Acesso antecipado a
+                  novos recursos - Funcionalidades exclusivas para assinantes
                 </p>
               </div>
             </div>

@@ -20,6 +20,7 @@ export default function YouTubePlayer({ isHome }: Props) {
   const playerRef = useRef<YouTubePlayerType | null>(null)
   const { isActive, isBreak, activePlay } = useContext(TimeContext)
   const [isPlaying, setIsPlaying] = useState(true)
+  const [isButtonEnabled, setIsButtonEnabled] = useState(false)
 
   const extractVideoId = (url: string): string | null => {
     const regex =
@@ -73,9 +74,18 @@ export default function YouTubePlayer({ isHome }: Props) {
     width: '0',
     playerVars: {
       autoplay: 0,
+      origin: process.env.KINDE_SITE_URL,
     },
   }
 
+  useEffect(() => {
+    setIsButtonEnabled(false)
+    const timer = setTimeout(() => {
+      setIsButtonEnabled(true)
+    }, 5000)
+
+    return () => clearTimeout(timer)
+  }, [])
   return (
     <div className="w-full">
       {isHome && (
@@ -87,7 +97,7 @@ export default function YouTubePlayer({ isHome }: Props) {
               onChange={handleInputChange}
             />
             {isPlaying ? (
-              <Button>
+              <Button disabled={!isButtonEnabled}>
                 <VolumeX
                   size={24}
                   className="text-white"
@@ -95,7 +105,7 @@ export default function YouTubePlayer({ isHome }: Props) {
                 />
               </Button>
             ) : (
-              <Button>
+              <Button disabled={!isButtonEnabled}>
                 <Volume size={24} className="text-white" onClick={handlePlay} />
               </Button>
             )}

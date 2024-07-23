@@ -8,18 +8,45 @@ import {
 } from '@/components/ui/select'
 
 import { CardContent, CardFooter } from '@/components/ui/card'
-
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
 import { Input } from '@/components/input'
 
 import { Label } from '@radix-ui/react-label'
 import { Controller } from 'react-hook-form'
 
 import useTaskController from './form-controller'
-import { TextArea } from '@/components/textarea'
 import { Button } from '@/components/ui/button'
 import { KindeUser } from '@kinde-oss/kinde-auth-nextjs/types'
 import { useEffect } from 'react'
 import { Loader2 } from 'lucide-react'
+
+const modules = {
+  toolbar: [
+    [{ header: '1' }, { header: '2' }, { font: [] }],
+    [{ size: [] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    ['link', 'image', 'video'],
+    ['clean'],
+  ],
+}
+
+const formats = [
+  'header',
+  'font',
+  'size',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'link',
+  'image',
+  'video',
+]
 
 interface dataProjectprops {
   id: string
@@ -75,11 +102,25 @@ export default function FormTask({ user, dataProject, data }: ModalTaskProps) {
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label>Descrição doa tarefa</Label>
-              <TextArea
-                placeholder="Descrição da tarefa"
-                {...register('description')}
-                error={errors.description?.message}
+              <Controller
+                name="description"
+                control={control}
                 defaultValue={(data && data?.description) || ''}
+                render={({ field }) => (
+                  <>
+                    <ReactQuill
+                      {...field}
+                      modules={modules}
+                      formats={formats}
+                      className="min-h-40 max-h-40 overflow-auto w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    />
+                    {errors.description && (
+                      <span className="text-red-600 text-sm mt-1">
+                        {errors.description.message}
+                      </span>
+                    )}
+                  </>
+                )}
               />
             </div>
             <div className="flex flex-col space-y-1.5 w-full">
