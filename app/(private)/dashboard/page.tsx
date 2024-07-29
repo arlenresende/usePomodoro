@@ -28,6 +28,7 @@ async function getData(userId: string): Promise<Task[]> {
       project: {
         select: {
           name: true,
+          palletColor: true,
         },
       },
     },

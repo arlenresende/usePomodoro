@@ -1,14 +1,15 @@
 'use client'
 import { Badge } from '@/components/ui/badge'
-
 import { format } from 'date-fns'
 import { ActionsTaskDashboard } from '../../dashboard/components/usePomodoroCell'
 import { TimeCell } from '../../dashboard/components/time-cell'
 import ModalView from '../../dashboard/components/dropdown-menu'
 import Pagination from '../pagination'
 import { useState } from 'react'
+
 export interface dataProjectprops {
-  name: string
+  name: string | null
+  palletColor?: string | null
 }
 
 export interface Task {
@@ -22,11 +23,13 @@ export interface Task {
   description: string
   projectId: string
 }
+
 interface TableProps {
   data: Task[]
   isCompleted?: boolean
 }
-export default function Table({ data, isCompleted }: TableProps) {
+
+function TaskTable({ data, isCompleted }: TableProps) {
   const itemsPerPage = 10
   const [currentPage, setCurrentPage] = useState<number>(1)
   const startIndex = (currentPage - 1) * itemsPerPage
@@ -34,9 +37,14 @@ export default function Table({ data, isCompleted }: TableProps) {
   const currentData = data.slice(startIndex, endIndex)
   const totalPages = Math.ceil(data.length / itemsPerPage)
 
+  const borderColor = data[0]?.project?.palletColor || 'primary'
+
   return (
     <>
-      <div className="border-l-4 border-l-primary border border-primary-foreground overflow-hidden rounded-sm">
+      <div
+        className={`border-l-4  border border-primary-foreground overflow-hidden rounded-sm`}
+        style={{ borderLeftColor: `${borderColor}` }}
+      >
         <div className="">
           <div className="grid grid-cols-7 items-center  p-4">
             <div className="font-semibold text-sm text-primary  col-span-2">
@@ -128,5 +136,38 @@ export default function Table({ data, isCompleted }: TableProps) {
         />
       </div>
     </>
+  )
+}
+
+export default function Table({ data, isCompleted }: TableProps) {
+  const groupedData = data.reduce((acc: { [key: string]: Task[] }, task) => {
+    const projectName = task.project?.name || 'Uncategorized'
+    if (!acc[projectName]) {
+      acc[projectName] = []
+    }
+    acc[projectName].push(task)
+    return acc
+  }, {})
+
+  return (
+    <div>
+      {Object.entries(groupedData).map(([projectName, tasks]) => (
+        <div key={projectName}>
+          <div className="mb-4 flex flex-col gap-2">
+            <h2
+              className="text-xl font-semibold "
+              style={{ color: `${tasks[0]?.project?.palletColor}` }}
+            >
+              {projectName}
+            </h2>
+            <hr
+              className="border-none h-1 w-8 "
+              style={{ backgroundColor: `${tasks[0]?.project?.palletColor}` }}
+            />
+          </div>
+          <TaskTable data={tasks} isCompleted={isCompleted} />
+        </div>
+      ))}
+    </div>
   )
 }
