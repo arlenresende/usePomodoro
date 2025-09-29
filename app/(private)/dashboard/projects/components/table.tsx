@@ -16,7 +16,7 @@ import { useState } from 'react'
 import FormModalProject from '../formModalProject'
 import { KindeUser } from '@kinde-oss/kinde-auth-nextjs/types'
 import { deleteDataProject } from '@/app/actions/deleteProject'
-import Link from 'next/link'
+
 import { useToast } from '@/components/ui/use-toast'
 export interface ProjectProps {
   id: string
@@ -119,7 +119,7 @@ export default function TableProject({ data, user }: DataProjectProps) {
         </TableBody>
       </Table>
       <div className="flex justify-end w-full mt-4">
-        {data?.Subscription?.status !== 'active' ? (
+        {/* {data?.Subscription?.status !== 'active' ? (
           <div className="flex gap-2 items-center justify-end">
             <p className="text-base text-foreground">
               Crie projetos ilimitados agora!
@@ -132,7 +132,12 @@ export default function TableProject({ data, user }: DataProjectProps) {
           <Button className="" onClick={() => handleModalProject()}>
             Cadastrar novo Projeto
           </Button>
-        )}
+        )} */}
+        <div className="flex gap-2 items-center justify-end">
+          <Button className="" onClick={() => handleModalProject()}>
+            Cadastrar novo Projeto
+          </Button>
+        </div>
       </div>
       <FormModalProject
         open={open}

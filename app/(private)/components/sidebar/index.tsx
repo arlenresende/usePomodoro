@@ -5,7 +5,6 @@ import {
   ListChecks,
   ListTodo,
   Settings,
-  Wallet,
 } from 'lucide-react'
 import Link from 'next/link'
 import { Navigation } from '../navigation'
@@ -52,12 +51,12 @@ export default function SidebarDashboard() {
                   icon={<Settings />}
                   name="Configurações"
                 />
-                <Navigation
+                {/* <Navigation
                   url="/dashboard/billing"
                   icon={<Wallet />}
                   name="Seja Pró"
                   isActive
-                />
+                /> */}
               </div>
             </div>
             <div></div>
