@@ -116,8 +116,7 @@ export default async function RootLayout({
     redirect('/')
   }
 
-  await createDefaultProject(user.id as string)
-
+  // IMPORTANTE: Criar usuário ANTES de criar projeto
   await getDataUser({
     email: user.email as string,
     id: user.id,
@@ -125,6 +124,8 @@ export default async function RootLayout({
     lastName: user.family_name,
     profileImage: user.picture,
   })
+
+  await createDefaultProject(user.id as string)
 
   return (
     <div className="xl:min-h-screen bg-background ">
