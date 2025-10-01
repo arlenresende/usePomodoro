@@ -36,6 +36,7 @@ async function getData(
   if (!user) {
     const name = `${firstName ?? ''} ${lastName ?? ''}`.trim()
 
+    // Criar o usuário
     await prisma.user.create({
       data: {
         id: userId,
@@ -47,6 +48,7 @@ async function getData(
       },
     })
 
+    // Buscar novamente para pegar o colorScheme
     user = await prisma.user.findUnique({
       where: { id: userId },
       select: { colorScheme: true },
