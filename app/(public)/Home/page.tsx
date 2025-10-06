@@ -43,20 +43,23 @@ export default async function HomePage() {
   const user = await getUser()
 
   return (
-    <div className="container-none mx-auto py-4 lg:py-12 px-4 lg:px-12 h-full flex items-start justify-between flex-col">
+    <div className="container-none mx-auto py-4 lg:py-12 px-4 lg:px-12 min-h-screen flex items-stretch justify-between flex-col">
       <Header />
-      <div className=" mx-auto flex flex-col gap-8">
-        <div className="  mx-auto w-full flex items-end justify-end  "></div>
-        <div className="flex flex-col lg:flex-row gap-1 lg:gap-6 items-center justify-center w-auto">
+      <div className="w-full mx-auto flex flex-col gap-4 sm:gap-6 lg:gap-8 flex-1 flex items-center justify-center">
+        <div className="w-full max-w-md mx-auto">
           <Countdown />
         </div>
-        <div className="max-w-3xl mx-auto w-full flex flex-col gap-4">
+        <div className="max-w-3xl mx-auto w-full flex flex-col gap-2 sm:gap-3 md:gap-4">
           <PlayButton />
           <div className="flex items-center justify-center gap-4">
             <YouTubeAudioPlayer isHome />
           </div>
-          <div className="flex items-center justify-center mt-4">
-            <Button asChild variant="outline">
+          <div className="flex items-center justify-center mt-2 sm:mt-4">
+            <Button
+              asChild
+              variant="outline"
+              className="text-xs sm:text-sm lg:text-base py-2 sm:py-3 px-3 sm:px-4"
+            >
               <Link href="/pomodoro">
                 Learn more about the Pomodoro Technique
               </Link>
@@ -65,25 +68,32 @@ export default async function HomePage() {
         </div>
 
         {user ? (
-          <div className="flex flex-col xl:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col items-center justify-center gap-2 sm:gap-4">
             <div className="flex flex-row gap-2 items-center justify-center">
-              <Button asChild>
+              <Button
+                asChild
+                className="text-xs sm:text-sm py-2 sm:py-3 px-3 sm:px-4"
+              >
                 <Link href="/dashboard">Go to Dashboard</Link>
               </Button>
             </div>
           </div>
         ) : (
-          <div className="flex flex-col xl:flex-row items-center justify-center gap-4">
-            <div className="flex flex-row gap-2 items-center justify-center">
+          <div className="flex flex-col items-center justify-center gap-2 sm:gap-4">
+            <div className="flex flex-row gap-2 items-center justify-center flex-wrap">
               <RegisterLink>
-                <Button>Create an account</Button>
+                <Button className="text-xs sm:text-sm py-2 sm:py-3 px-3 sm:px-4">
+                  Create an account
+                </Button>
               </RegisterLink>
-              <span>or</span>
+              <span className="text-xs sm:text-sm">or</span>
               <LoginLink>
-                <Button>Login</Button>
+                <Button className="text-xs sm:text-sm py-2 sm:py-3 px-3 sm:px-4">
+                  Login
+                </Button>
               </LoginLink>
             </div>
-            <span>to add tasks</span>
+            <span className="text-xs sm:text-sm">to add tasks</span>
           </div>
         )}
       </div>

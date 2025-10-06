@@ -90,10 +90,10 @@ export default function YouTubePlayer({ isHome }: Props) {
     <div className="w-full">
       {isHome && (
         <>
-          <div className="flex gap-4 items-center justify-center">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 items-center justify-center">
             <Input
               placeholder="YouTube Video Link"
-              className="py-5 lg:py-6 text-sm lg:text-base"
+              className="py-3 sm:py-4 lg:py-6 text-xs sm:text-sm lg:text-base w-full sm:w-auto"
               onChange={handleInputChange}
             />
             {isPlaying ? (

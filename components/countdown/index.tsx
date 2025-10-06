@@ -15,16 +15,19 @@ export default function Countdown() {
     ? times[activeId]?.seconds ?? 0
     : globalSeconds
   return (
-    <>
-      <div className="flex gap-2 items-center justify-center">
+    <div className="flex flex-row items-center justify-center gap-1 sm:gap-2 md:gap-3">
+      <div className="flex gap-1 sm:gap-2 items-center justify-center">
         <CardNumber time={parseInt(formatTime(currentMinutes)[0])} />
         <CardNumber time={parseInt(formatTime(currentMinutes)[1])} />
       </div>
-      <span className="text-[50px] lg:text-[140px] text-primary"> : </span>
-      <div className="flex gap-2 items-center justify-center">
+      <span className="text-[40px] sm:text-[50px] md:text-[70px] lg:text-[140px] text-primary mx-0 font-bold">
+        {' '}
+        :{' '}
+      </span>
+      <div className="flex gap-1 sm:gap-2 items-center justify-center">
         <CardNumber time={parseInt(formatTime(currentSeconds)[0])} />
         <CardNumber time={parseInt(formatTime(currentSeconds)[1])} />
       </div>
-    </>
+    </div>
   )
 }

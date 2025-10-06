@@ -36,7 +36,7 @@ export default function PlayButton({ ...props }: PlayButtonProps) {
     <>
       {isActive && !isBreak ? (
         <Button
-          className="w-full flex items-center justify-center gap-2 py-4 lg:py-6"
+          className="w-full flex items-center justify-center gap-2 py-3 sm:py-4 lg:py-6"
           variant="destructive"
           {...props}
           onClick={() => handleReset()}
@@ -57,7 +57,7 @@ export default function PlayButton({ ...props }: PlayButtonProps) {
             ) : (
               <Play size={24} />
             )}
-            <span className="text-md lg:text-xl">
+            <span className="text-sm sm:text-md lg:text-xl">
               {!isButtonEnabled ? 'Loading...' : 'Start'}
             </span>
           </>
@@ -66,13 +66,13 @@ export default function PlayButton({ ...props }: PlayButtonProps) {
 
       {isBreak && (
         <Button
-          className="bg-green-500 w-full flex items-center justify-center gap-2 py-4 lg:py-6"
+          className="bg-green-500 w-full flex items-center justify-center gap-2 py-3 sm:py-4 lg:py-6"
           variant="destructive"
           disabled
         >
           <>
             <Pause size={24} />
-            <span className="text-md lg:text-xl">
+            <span className="text-sm sm:text-md lg:text-xl">
               Break of {formatTime(globalMinutes || 0)}:
               {formatTime(globalSeconds || 0)}
             </span>
