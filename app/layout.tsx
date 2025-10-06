@@ -6,7 +6,7 @@ import { TimeContextProvider } from './context/timeContext'
 import prisma from '@/lib/db'
 import { unstable_noStore as noStore } from 'next/cache'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
-import { Analytics } from '@vercel/analytics/next'
+import { AnalyticsClient } from './components/analytics-client'
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
@@ -110,7 +110,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <TimeContextProvider>{children}</TimeContextProvider>
-          <Analytics />
+          <AnalyticsClient />
         </ThemeProvider>
       </body>
     </html>
