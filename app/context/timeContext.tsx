@@ -53,7 +53,7 @@ export function TimeContextProvider({ children }: TimeContextProviderProps) {
               seconds = 59
             } else {
               if (!isBreak) {
-                minutes = 25
+                minutes = 5
                 seconds = 0
                 setIsBreak(true)
               } else {
@@ -73,7 +73,7 @@ export function TimeContextProvider({ children }: TimeContextProviderProps) {
             setGlobalSeconds(59)
           } else {
             if (!isBreak) {
-              setGlobalMinutes(25)
+              setGlobalMinutes(5)
               setGlobalSeconds(0)
               setIsBreak(true)
             } else {
