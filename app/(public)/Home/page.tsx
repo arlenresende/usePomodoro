@@ -11,7 +11,31 @@ import {
   RegisterLink,
 } from '@kinde-oss/kinde-auth-nextjs/components'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
+import { Metadata } from 'next'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'Use Pomodoro - Aumente sua produtividade com a técnica Pomodoro',
+  description:
+    'Use Pomodoro é uma aplicação que ajuda você a aplicar a técnica Pomodoro para aumentar sua produtividade, foco e gerenciar melhor seu tempo em tarefas diárias.',
+  keywords: [
+    'pomodoro',
+    'produtividade',
+    'gerenciamento de tempo',
+    'foco',
+    'concentração',
+    'tarefas',
+  ],
+  openGraph: {
+    title: 'Use Pomodoro - Aumente sua produtividade',
+    description:
+      'Aplique a técnica Pomodoro para aumentar sua produtividade e foco nas tarefas diárias.',
+    url: '/',
+    siteName: 'Use Pomodoro',
+    locale: 'pt-BR',
+    type: 'website',
+  },
+}
 
 export default async function HomePage() {
   const { getUser } = getKindeServerSession()
@@ -29,6 +53,11 @@ export default async function HomePage() {
           <PlayButton />
           <div className="flex items-center justify-center gap-4">
             <YouTubeAudioPlayer isHome />
+          </div>
+          <div className="flex items-center justify-center mt-4">
+            <Button asChild variant="outline">
+              <Link href="/pomodoro">Saiba mais sobre a Técnica Pomodoro</Link>
+            </Button>
           </div>
         </div>
 
