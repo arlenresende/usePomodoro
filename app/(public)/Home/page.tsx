@@ -43,9 +43,9 @@ export default async function HomePage() {
   const user = await getUser()
 
   return (
-    <div className="container-none mx-auto py-4 lg:py-12 px-4 lg:px-12 min-h-screen flex items-stretch justify-between flex-col">
+    <div className="container-none mx-auto py-4 lg:py-12 px-4 lg:px-12 min-h-screen flex flex-col">
       <Header />
-      <div className="w-full mx-auto flex flex-col gap-4 sm:gap-6 lg:gap-8 flex-1 flex items-center justify-center">
+      <div className="w-full mx-auto flex flex-col gap-4 sm:gap-6 lg:gap-8 flex-1 flex items-center justify-center my-4">
         <div className="w-full max-w-md mx-auto">
           <Countdown />
         </div>
@@ -97,7 +97,9 @@ export default async function HomePage() {
           </div>
         )}
       </div>
-      <Footer />
+      <div className="mt-auto">
+        <Footer />
+      </div>
     </div>
   )
 }
