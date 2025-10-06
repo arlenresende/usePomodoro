@@ -19,28 +19,24 @@ export function ModalConfig({ open, setOpen }: DialogConfigProps) {
     <Dialog open={open} onOpenChange={() => setOpen(!open)}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Configurações Pomodoro</DialogTitle>
+          <DialogTitle>Pomodoro Settings</DialogTitle>
           <DialogDescription>
-            Faça alterações no seu pomodoro. Clique em salvar quando terminar.
+            Make changes to your pomodoro. Click save when finished.
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col gap-4">
           <Input
             placeholder="25:00"
-            label="Tempo do Pomodoro"
+            label="Pomodoro Time"
             name="name"
             error="true"
           />
           <Input
             placeholder="05:00"
-            label="Tempo do Pausa Curta"
+            label="Short Break Time"
             name="shortpause"
           />
-          <Input
-            placeholder="10:00"
-            label="Tempo da pausa longa"
-            name="longpause"
-          />
+          <Input placeholder="10:00" label="Long Break Time" name="longpause" />
         </div>
         <DialogFooter>
           <Button onClick={() => setOpen(false)}>Save changes</Button>

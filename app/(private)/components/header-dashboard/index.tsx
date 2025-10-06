@@ -59,22 +59,22 @@ export default function HeaderDashboard() {
                     <Navigation
                       url="/dashboard/tasks"
                       icon={<ListChecksIcon />}
-                      name="Tarefas"
+                      name="Tasks"
                     />
                     <Navigation
                       url="/dashboard/projects"
                       icon={<FolderOpen />}
-                      name="Projetos"
+                      name="Projects"
                     />
                     <Navigation
                       url="/dashboard/settings"
                       icon={<Settings />}
-                      name="Configurações"
+                      name="Settings"
                     />
                     <Navigation
                       url="/dashboard/billing"
                       icon={<Wallet />}
-                      name="Seja Pró"
+                      name="Go Pro"
                       isActive
                     />
                   </DropdownMenuContent>

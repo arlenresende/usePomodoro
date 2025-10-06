@@ -1,24 +1,25 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Use Pomodoro - Aumente sua produtividade com a técnica Pomodoro',
+  title:
+    'Use Pomodoro - Increase your productivity with the Pomodoro technique',
   description:
-    'Use Pomodoro é uma aplicação que ajuda você a aplicar a técnica Pomodoro para aumentar sua produtividade, foco e gerenciar melhor seu tempo em tarefas diárias.',
+    'Use Pomodoro is an application that helps you apply the Pomodoro technique to increase your productivity, focus, and better manage your time on daily tasks.',
   keywords: [
     'pomodoro',
-    'produtividade',
-    'gerenciamento de tempo',
-    'foco',
-    'concentração',
-    'tarefas',
+    'productivity',
+    'time management',
+    'focus',
+    'concentration',
+    'tasks',
   ],
   openGraph: {
-    title: 'Use Pomodoro - Aumente sua produtividade',
+    title: 'Use Pomodoro - Increase your productivity',
     description:
-      'Aplique a técnica Pomodoro para aumentar sua produtividade e foco nas tarefas diárias.',
+      'Apply the Pomodoro technique to increase your productivity and focus on daily tasks.',
     url: '/',
     siteName: 'Use Pomodoro',
-    locale: 'pt-BR',
+    locale: 'en-US',
     type: 'website',
   },
 }

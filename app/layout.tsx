@@ -14,15 +14,16 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Use Pomodoro',
+  title: 'Use Pomodoro - Increase your productivity',
   description:
-    'Aplicação para gerenciamento de tempo e produtividade com a técnica Pomodoro',
+    'Use Pomodoro is an application that helps you apply the Pomodoro technique to increase your productivity, focus, and better manage your time on daily tasks.',
   keywords: [
     'pomodoro',
-    'produtividade',
-    'gerenciamento de tempo',
-    'foco',
-    'concentração',
+    'productivity',
+    'time management',
+    'focus',
+    'concentration',
+    'tasks',
   ],
   authors: [{ name: 'Use Pomodoro Team' }],
   creator: 'Use Pomodoro',
@@ -34,11 +35,11 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://usepomodoro.com/'),
   openGraph: {
-    title: 'Use Pomodoro',
+    title: 'Use Pomodoro - Increase your productivity',
     description:
-      'Aplicação para gerenciamento de tempo e produtividade com a técnica Pomodoro',
+      'Apply the Pomodoro technique to increase your productivity and focus on daily tasks.',
     siteName: 'Use Pomodoro',
-    locale: 'pt-BR',
+    locale: 'en-US',
     type: 'website',
   },
 }
@@ -61,19 +62,19 @@ async function getData(
   if (!user) {
     const name = `${firstName ?? ''} ${lastName ?? ''}`.trim()
 
-    // Criar o usuário
+    // Create the user
     await prisma.user.create({
       data: {
         id: userId,
         email: email ?? '',
-        name: name || 'Usuário',
+        name: name || 'User',
         timePomorodo: 25,
         pausePomodoro: 5,
         urlVideo: 'https://www.youtube.com/watch?v=9hYqOQpYq6w',
       },
     })
 
-    // Buscar novamente para pegar o colorScheme
+    // Fetch again to get the colorScheme
     user = await prisma.user.findUnique({
       where: { id: userId },
       select: { colorScheme: true },

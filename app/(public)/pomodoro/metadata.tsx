@@ -1,24 +1,24 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Técnica Pomodoro - Use Pomodoro',
+  title: 'Pomodoro Technique - Use Pomodoro',
   description:
-    'Aprenda sobre a Técnica Pomodoro, um método eficaz de gerenciamento de tempo que utiliza períodos de trabalho focado intercalados com pequenas pausas para maximizar a concentração e o desempenho mental.',
+    'Learn about the Pomodoro Technique, an effective time management method that uses focused work periods interspersed with short breaks to maximize concentration and mental performance.',
   keywords: [
     'pomodoro',
-    'técnica pomodoro',
-    'produtividade',
-    'gerenciamento de tempo',
-    'foco',
-    'concentração',
+    'pomodoro technique',
+    'productivity',
+    'time management',
+    'focus',
+    'concentration',
   ],
   openGraph: {
-    title: 'Técnica Pomodoro - Use Pomodoro',
+    title: 'Pomodoro Technique - Use Pomodoro',
     description:
-      'Aprenda sobre a Técnica Pomodoro, um método eficaz de gerenciamento de tempo para maximizar sua produtividade e foco.',
+      'Learn about the Pomodoro Technique, an effective time management method to maximize your productivity and focus.',
     url: '/pomodoro',
     siteName: 'Use Pomodoro',
-    locale: 'pt-BR',
+    locale: 'en-US',
     type: 'website',
   },
 }

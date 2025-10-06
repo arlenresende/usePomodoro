@@ -73,14 +73,14 @@ export default function FormTask({ user, data }: ModalTaskProps) {
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
               <Input
-                placeholder="Digite o nome da tarefa"
-                label="Nome da tarefa"
+                placeholder="Enter task name"
+                label="Task name"
                 {...register('name')}
                 error={errors.name?.message}
               />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label>Descrição doa tarefa</Label>
+              <Label>Task description</Label>
 
               <Controller
                 name="description"
@@ -106,7 +106,7 @@ export default function FormTask({ user, data }: ModalTaskProps) {
             <div className="flex flex-col space-y-1.5 w-full">
               <div className="w-full gap-4 flex flex-col lg:flex-row">
                 <div className="w-full">
-                  <Label>Projeto</Label>
+                  <Label>Project</Label>
                   <Controller
                     name="project"
                     control={control}
@@ -161,13 +161,13 @@ export default function FormTask({ user, data }: ModalTaskProps) {
                           </SelectTrigger>
                           <SelectContent className="border">
                             <SelectItem value="inProgress">
-                              Em Progresso
+                              In Progress
                             </SelectItem>
-                            <SelectItem value="blocked">Bloqueado</SelectItem>
-                            <SelectItem value="paused">Pausado</SelectItem>
-                            <SelectItem value="todo">Para fazer</SelectItem>
-                            <SelectItem value="paused">Pausado</SelectItem>
-                            <SelectItem value="done">Finalizado</SelectItem>
+                            <SelectItem value="blocked">Blocked</SelectItem>
+                            <SelectItem value="paused">Paused</SelectItem>
+                            <SelectItem value="todo">To Do</SelectItem>
+                            <SelectItem value="paused">Paused</SelectItem>
+                            <SelectItem value="done">Completed</SelectItem>
                           </SelectContent>
                         </Select>
                       )
@@ -175,7 +175,7 @@ export default function FormTask({ user, data }: ModalTaskProps) {
                   ></Controller>
                 </div>
                 <div className="w-full">
-                  <Label>Tipo</Label>
+                  <Label>Type</Label>
                   <Controller
                     name="type"
                     control={control}
@@ -192,18 +192,18 @@ export default function FormTask({ user, data }: ModalTaskProps) {
                           disabled={disabled}
                         >
                           <SelectTrigger>
-                            <SelectValue placeholder="Tipo" />
+                            <SelectValue placeholder="Type" />
                           </SelectTrigger>
                           <SelectContent className="border">
                             <SelectItem value="feature">Feature</SelectItem>
                             <SelectItem value="bug">Bug</SelectItem>
-                            <SelectItem value="Incident">Incidente</SelectItem>
+                            <SelectItem value="Incident">Incident</SelectItem>
                             <SelectItem value="enhancement">
-                              Melhoria
+                              Enhancement
                             </SelectItem>
                             <SelectItem value="spike">Spike</SelectItem>
                             <SelectItem value="maintenance">
-                              Manutenção
+                              Maintenance
                             </SelectItem>
                           </SelectContent>
                         </Select>
@@ -212,7 +212,7 @@ export default function FormTask({ user, data }: ModalTaskProps) {
                   ></Controller>
                 </div>
                 <div className="w-full">
-                  <Label>Prioridade</Label>
+                  <Label>Priority</Label>
                   <Controller
                     name="priority"
                     control={control}
@@ -229,12 +229,12 @@ export default function FormTask({ user, data }: ModalTaskProps) {
                           disabled={disabled}
                         >
                           <SelectTrigger>
-                            <SelectValue placeholder="Prioridade" />
+                            <SelectValue placeholder="Priority" />
                           </SelectTrigger>
                           <SelectContent className="border">
-                            <SelectItem value="high">Alta</SelectItem>
-                            <SelectItem value="medium">Média</SelectItem>
-                            <SelectItem value="low">Baixa</SelectItem>
+                            <SelectItem value="high">High</SelectItem>
+                            <SelectItem value="medium">Medium</SelectItem>
+                            <SelectItem value="low">Low</SelectItem>
                           </SelectContent>
                         </Select>
                       )
@@ -253,7 +253,7 @@ export default function FormTask({ user, data }: ModalTaskProps) {
             <Loader2 className=" h-4 w-4 animate-spin" />
           </Button>
         ) : (
-          <Button onClick={handleSubmit}>Salvar</Button>
+          <Button onClick={handleSubmit}>Save</Button>
         )}
       </CardFooter>
     </>

@@ -22,13 +22,13 @@ export default function PlayButton({ ...props }: PlayButtonProps) {
   const [isButtonEnabled, setIsButtonEnabled] = useState(false)
 
   useEffect(() => {
-    // Desabilitar o botão por 5 segundos ao montar o componente
+    // Disable the button for 5 seconds when mounting the component
     setIsButtonEnabled(false)
     const timer = setTimeout(() => {
       setIsButtonEnabled(true)
     }, 5000)
 
-    // Limpar o timer ao desmontar o componente
+    // Clear the timer when unmounting the component
     return () => clearTimeout(timer)
   }, [])
 
@@ -42,23 +42,23 @@ export default function PlayButton({ ...props }: PlayButtonProps) {
           onClick={() => handleReset()}
         >
           <TimerOff size={24} />
-          <span className="text-md lg:text-xl">Interromper</span>
+          <span className="text-md lg:text-xl">Stop</span>
         </Button>
       ) : (
         <Button
           className={` ${isBreak ? 'hidden' : 'flex'} w-full items-center justify-center gap-2 py-4 lg:py-6`}
           onClick={() => handleStart()}
           {...props}
-          disabled={!isButtonEnabled} // Adicionar a propriedade disabled
+          disabled={!isButtonEnabled} // Add the disabled property
         >
           <>
             {!isButtonEnabled ? (
-              <Loader size={24} className="animate-spin" /> // Adicionar o ícone de carregamento
+              <Loader size={24} className="animate-spin" /> // Add the loading icon
             ) : (
               <Play size={24} />
             )}
             <span className="text-md lg:text-xl">
-              {!isButtonEnabled ? 'Carregando...' : 'Começar'}
+              {!isButtonEnabled ? 'Loading...' : 'Start'}
             </span>
           </>
         </Button>
@@ -73,7 +73,7 @@ export default function PlayButton({ ...props }: PlayButtonProps) {
           <>
             <Pause size={24} />
             <span className="text-md lg:text-xl">
-              Pausa de {formatTime(globalMinutes || 0)}:
+              Break of {formatTime(globalMinutes || 0)}:
               {formatTime(globalSeconds || 0)}
             </span>
           </>

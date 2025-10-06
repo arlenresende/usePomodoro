@@ -55,8 +55,8 @@ export default function TableProject({ data, user }: DataProjectProps) {
     try {
       await deleteDataProject(id, user)
       toast({
-        title: 'Parabéns! ',
-        description: ' Projeto deletado com sucesso',
+        title: 'Congratulations! ',
+        description: 'Project successfully deleted',
         className: 'bg-red-700',
       })
       setLoading(false)
@@ -66,14 +66,14 @@ export default function TableProject({ data, user }: DataProjectProps) {
   return (
     <>
       <Table className="w-full  border border-l-4 border-l-primary">
-        <TableCaption>Projetos Cadastrados.</TableCaption>
+        <TableCaption>Registered Projects.</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>Nome</TableHead>
+            <TableHead>Name</TableHead>
 
             <TableHead>Status</TableHead>
-            <TableHead>Paleta</TableHead>
-            <TableHead className="text-right">Ações</TableHead>
+            <TableHead>Palette</TableHead>
+            <TableHead className="text-right">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -122,20 +122,20 @@ export default function TableProject({ data, user }: DataProjectProps) {
         {/* {data?.Subscription?.status !== 'active' ? (
           <div className="flex gap-2 items-center justify-end">
             <p className="text-base text-foreground">
-              Crie projetos ilimitados agora!
+              Create unlimited projects now!
             </p>
             <Button className="" asChild>
-              <Link href="/dashboard/billing">Sejá Pro!</Link>
+              <Link href="/dashboard/billing">Go Pro!</Link>
             </Button>
           </div>
         ) : (
           <Button className="" onClick={() => handleModalProject()}>
-            Cadastrar novo Projeto
+            Register New Project
           </Button>
         )} */}
         <div className="flex gap-2 items-center justify-end">
           <Button className="" onClick={() => handleModalProject()}>
-            Cadastrar novo Projeto
+            Register New Project
           </Button>
         </div>
       </div>

@@ -49,8 +49,8 @@ export default function FormSettings({ data, userId }: FormSettingsProps) {
                   name="id"
                 />
                 <Input
-                  placeholder="Nome"
-                  label="Seu nome"
+                  placeholder="Name"
+                  label="Your name"
                   {...register('name')}
                   error={errors.name?.message}
                   defaultValue={(data && data?.name) || ''}
@@ -59,7 +59,7 @@ export default function FormSettings({ data, userId }: FormSettingsProps) {
               <div className="flex flex-col space-y-1.5 w-full">
                 <Input
                   placeholder="Email"
-                  label="Seu Email"
+                  label="Your Email"
                   type="email"
                   {...register('email')}
                   error={errors.email?.message}
@@ -71,7 +71,7 @@ export default function FormSettings({ data, userId }: FormSettingsProps) {
               <div className="flex flex-col space-y-1.5 w-full">
                 <Input
                   placeholder="25:00"
-                  label="Tempo do Pomodoro"
+                  label="Pomodoro Time"
                   {...register('timePomorodo')}
                   type="number"
                   defaultValue={(data && data?.timePomorodo) || ''}
@@ -80,7 +80,7 @@ export default function FormSettings({ data, userId }: FormSettingsProps) {
               <div className="flex flex-col space-y-1.5 w-full">
                 <Input
                   placeholder="05:00"
-                  label="Tempo de Pausa "
+                  label="Break Time"
                   {...register('pausePomodoro')}
                   type="number"
                   defaultValue={(data && data?.pausePomodoro) || ''}
@@ -91,15 +91,15 @@ export default function FormSettings({ data, userId }: FormSettingsProps) {
             <div className="flex flex-col xl:flex-row  items-start gap-2 w-full">
               <div className="flex flex-col space-y-1.5 w-full">
                 <Input
-                  placeholder="Url do video do YouTube"
-                  label="Url do video do YouTube"
+                  placeholder="YouTube video URL"
+                  label="YouTube video URL"
                   {...register('urlVideo')}
                   error={errors.urlVideo?.message}
                   defaultValue={(data && data?.urlVideo) || ''}
                 />
               </div>
               <div className="flex flex-col space-y-1.5 w-full">
-                <Label>Cor de Tema</Label>
+                <Label>Theme Color</Label>
                 <Controller
                   name="colorScheme"
                   control={control}
@@ -141,7 +141,7 @@ export default function FormSettings({ data, userId }: FormSettingsProps) {
               <Loader2 />
             </Button>
           ) : (
-            <Button type="submit">Salvar</Button>
+            <Button type="submit">Save</Button>
           )}
         </CardFooter>
       </form>

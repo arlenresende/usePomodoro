@@ -15,24 +15,25 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Use Pomodoro - Aumente sua produtividade com a técnica Pomodoro',
+  title:
+    'Use Pomodoro - Increase your productivity with the Pomodoro technique',
   description:
-    'Use Pomodoro é uma aplicação que ajuda você a aplicar a técnica Pomodoro para aumentar sua produtividade, foco e gerenciar melhor seu tempo em tarefas diárias.',
+    'Use Pomodoro is an application that helps you apply the Pomodoro technique to increase your productivity, focus, and better manage your time on daily tasks.',
   keywords: [
     'pomodoro',
-    'produtividade',
-    'gerenciamento de tempo',
-    'foco',
-    'concentração',
-    'tarefas',
+    'productivity',
+    'time management',
+    'focus',
+    'concentration',
+    'tasks',
   ],
   openGraph: {
-    title: 'Use Pomodoro - Aumente sua produtividade',
+    title: 'Use Pomodoro - Increase your productivity',
     description:
-      'Aplique a técnica Pomodoro para aumentar sua produtividade e foco nas tarefas diárias.',
+      'Apply the Pomodoro technique to increase your productivity and focus on daily tasks.',
     url: '/',
     siteName: 'Use Pomodoro',
-    locale: 'pt-BR',
+    locale: 'en-US',
     type: 'website',
   },
 }
@@ -56,7 +57,9 @@ export default async function HomePage() {
           </div>
           <div className="flex items-center justify-center mt-4">
             <Button asChild variant="outline">
-              <Link href="/pomodoro">Saiba mais sobre a Técnica Pomodoro</Link>
+              <Link href="/pomodoro">
+                Learn more about the Pomodoro Technique
+              </Link>
             </Button>
           </div>
         </div>
@@ -65,7 +68,7 @@ export default async function HomePage() {
           <div className="flex flex-col xl:flex-row items-center justify-center gap-4">
             <div className="flex flex-row gap-2 items-center justify-center">
               <Button asChild>
-                <Link href="/dashboard">Ir para o Dashboard</Link>
+                <Link href="/dashboard">Go to Dashboard</Link>
               </Button>
             </div>
           </div>
@@ -73,14 +76,14 @@ export default async function HomePage() {
           <div className="flex flex-col xl:flex-row items-center justify-center gap-4">
             <div className="flex flex-row gap-2 items-center justify-center">
               <RegisterLink>
-                <Button>Crie uma conta</Button>
+                <Button>Create an account</Button>
               </RegisterLink>
-              <span>ou</span>
+              <span>or</span>
               <LoginLink>
-                <Button>Faça Login</Button>
+                <Button>Login</Button>
               </LoginLink>
             </div>
-            <span>para poder adicionar tarefas</span>
+            <span>to add tasks</span>
           </div>
         )}
       </div>

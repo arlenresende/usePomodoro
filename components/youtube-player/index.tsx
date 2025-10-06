@@ -92,7 +92,7 @@ export default function YouTubePlayer({ isHome }: Props) {
         <>
           <div className="flex gap-4 items-center justify-center">
             <Input
-              placeholder="Link do Vídeo do Youtube"
+              placeholder="YouTube Video Link"
               className="py-5 lg:py-6 text-sm lg:text-base"
               onChange={handleInputChange}
             />
