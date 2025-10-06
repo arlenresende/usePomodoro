@@ -41,9 +41,9 @@ export default async function Settings() {
   return (
     <Card className="w-full xl:max-w-[80%]">
       <CardHeader>
-        <CardTitle>Editar Configurações</CardTitle>
+        <CardTitle>Edit Settings</CardTitle>
         <CardDescription>
-          Edite novas configurações para seu dashboard em um clique.
+          Edit new settings for your dashboard in one click.
         </CardDescription>
       </CardHeader>
       <FormSettings data={data} userId={user?.id as string} />

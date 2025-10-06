@@ -45,13 +45,13 @@ export default function useProjectController() {
         }
         toast({
           title: 'Parabéns! ',
-          description: ' Projeto criado com sucesso',
+          description: 'Project created successfully',
           className: 'bg-green-700',
         })
       } catch (error) {
         toast({
-          title: 'Ops',
-          description: 'Não foi possiível criar o projeto',
+          title: 'Oops',
+          description: 'Unable to create the project',
           className: 'bg-red-700',
         })
       } finally {
@@ -65,14 +65,14 @@ export default function useProjectController() {
           setLoading(false)
         }
         toast({
-          title: 'Parabéns',
-          description: ' Projeto editado com sucesso',
+          title: 'Congratulations',
+          description: 'Project edited successfully',
           className: 'bg-green-700',
         })
       } catch (error) {
         toast({
-          title: 'Ops',
-          description: 'Não foi possiível editar o projeto',
+          title: 'Oops',
+          description: 'Unable to edit the project',
           className: 'bg-red-700',
         })
       } finally {

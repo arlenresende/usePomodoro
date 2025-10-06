@@ -61,17 +61,17 @@ export default function FormRegisterProject({
         </div>
         <div className="flex flex-col space-y-1.5">
           <Input
-            placeholder="Digite o nome do projeto"
-            label="Nome do Projeto"
+            placeholder="Enter project name"
+            label="Project Name"
             {...register('name')}
             error={errors.name?.message}
             defaultValue={(data && data?.name) || ''}
           />
         </div>
         <div className="flex flex-col space-y-1.5">
-          <Label>Descrição do Projeto</Label>
           <TextArea
-            placeholder="Descrição do projeto"
+            label="Project Description"
+            placeholder="Project description"
             {...register('description')}
             error={errors.description?.message}
             defaultValue={(data && data?.description) || ''}
@@ -79,7 +79,7 @@ export default function FormRegisterProject({
         </div>
 
         <div className="flex flex-col space-y-1.5 w-full">
-          <Label>Cor de Tema</Label>
+          <Label>Theme Color</Label>
           <Controller
             name="status"
             control={control}
@@ -97,8 +97,8 @@ export default function FormRegisterProject({
                     <SelectValue placeholder="Theme" />
                   </SelectTrigger>
                   <SelectContent className="border">
-                    <SelectItem value="ativo">Ativo</SelectItem>
-                    <SelectItem value="inativo">Inativo</SelectItem>
+                    <SelectItem value="ativo">Active</SelectItem>
+                    <SelectItem value="inativo">Inactive</SelectItem>
                   </SelectContent>
                 </Select>
               )
@@ -106,7 +106,7 @@ export default function FormRegisterProject({
           ></Controller>
         </div>
         <div className="flex flex-col space-y-1.5">
-          <Label>Paleta do Projeto</Label>
+          <Label>Project Color Palette</Label>
           <Controller
             name="palletColor"
             control={control}
@@ -114,7 +114,7 @@ export default function FormRegisterProject({
               <div className="w-full flex-col xl:flex-row items-start justify-start gap-4">
                 <Input
                   name="palletColor"
-                  placeholder="Digite a paleta do projeto"
+                  placeholder="Enter project color palette"
                   value={value || ''}
                   onChange={(e) => onChange(e.target.value)}
                   error={errors.palletColor?.message}

@@ -126,7 +126,7 @@ export default function FormTask({ user, dataProject, data }: ModalTaskProps) {
             <div className="flex flex-col space-y-1.5 w-full">
               <div className="w-full gap-4 flex flex-col lg:flex-row">
                 <div className="w-full">
-                  <Label>Projeto</Label>
+                  <Label>Project</Label>
                   <Controller
                     name="project"
                     control={control}
@@ -151,7 +151,7 @@ export default function FormTask({ user, dataProject, data }: ModalTaskProps) {
                           </SelectTrigger>
                           <SelectContent className="border">
                             <SelectItem value="default">
-                              Escolha o projeto
+                              Choose project
                             </SelectItem>
                             {dataProject &&
                               dataProject.length > 0 &&

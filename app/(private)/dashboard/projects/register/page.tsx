@@ -37,9 +37,9 @@ export default async function RegisterProject() {
       <div>
         <Card className="w-full xl:max-w-[80%]">
           <CardHeader>
-            <CardTitle>Criar projetos</CardTitle>
+            <CardTitle>Create Projects</CardTitle>
             <CardDescription>
-              Adicione novos projetos para seu borde em um clique.
+              Add new projects to your board in one click.
             </CardDescription>
           </CardHeader>
         </Card>

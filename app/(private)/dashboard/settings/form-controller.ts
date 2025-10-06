@@ -38,14 +38,14 @@ export default function useSettingsController() {
         setLoading(false)
       }
       toast({
-        title: 'Parabéns! ',
-        description: ' Configurações editadas com sucesso',
+        title: 'Congratulations! ',
+        description: 'Settings successfully updated',
         className: 'bg-green-700',
       })
     } catch (error) {
       toast({
-        title: 'Ops! ',
-        description: ' Ocorreu um erro ao editar as configurações',
+        title: 'Oops! ',
+        description: 'An error occurred while editing the settings',
         className: 'bg-red-700',
       })
     } finally {

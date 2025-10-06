@@ -41,7 +41,7 @@ async function getDataUser({
     },
   })
 
-  // Criar usuário apenas se não existir
+  // Create user only if it doesn't exist
   if (!user) {
     const name = `${firstName ?? ''} ${lastName ?? ''}`.trim()
     user = await prisma.user.create({
@@ -60,7 +60,7 @@ async function getDataUser({
     })
   }
 
-  // Criar customer no Stripe se não existir
+  // Create Stripe customer if it doesn't exist
   if (!user.stripeCustomerId) {
     const data = await stripe.customers.create({
       email,
@@ -116,7 +116,7 @@ export default async function RootLayout({
     redirect('/')
   }
 
-  // IMPORTANTE: Criar usuário ANTES de criar projeto
+  // IMPORTANT: Create user BEFORE creating project
   await getDataUser({
     email: user.email as string,
     id: user.id,

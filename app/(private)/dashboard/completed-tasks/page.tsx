@@ -48,9 +48,9 @@ export default async function CompletedTasks() {
         </>
       ) : (
         <div className="flex flex-col items-center justify-center gap-4 mt-12">
-          <p className="text-center">Você não possui tarefas finalizadas</p>
+          <p className="text-center">You don&apos;t have any completed tasks</p>
           <Button asChild>
-            <Link href="/dashboard/tasks">Começe criando uma tarefa</Link>
+            <Link href="/dashboard/tasks">Start by creating a task</Link>
           </Button>
         </div>
       )}

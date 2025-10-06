@@ -10,12 +10,12 @@ import { updateDataTask } from '@/app/actions/updateTask'
 
 const schema = z.object({
   id: z.string(),
-  name: z.string().min(1, { message: 'Nome obrigatório' }),
-  description: z.string().min(1, { message: 'Descrição obrigatória' }),
-  type: z.string().min(1, { message: 'Tipo obrigatória' }),
-  status: z.string().min(1, { message: 'Status obrigatório' }),
-  project: z.string().min(1, { message: 'Projeto obrigatório' }),
-  priority: z.string().min(1, { message: 'Prioridade obrigatória' }),
+  name: z.string().min(1, { message: 'Name is required' }),
+  description: z.string().min(1, { message: 'Description is required' }),
+  type: z.string().min(1, { message: 'Type is required' }),
+  status: z.string().min(1, { message: 'Status is required' }),
+  project: z.string().min(1, { message: 'Project is required' }),
+  priority: z.string().min(1, { message: 'Priority is required' }),
 })
 
 type FormData = z.infer<typeof schema>

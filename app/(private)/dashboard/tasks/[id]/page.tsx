@@ -66,9 +66,9 @@ export default async function SinglePageTask({
   return (
     <Card className="w-full max-w-[80%]">
       <CardHeader>
-        <CardTitle>{`${params.id ? 'Editar' : 'Criar'} Tarefa`}</CardTitle>
+        <CardTitle>{`${params.id ? 'Edit' : 'Create'} Task`}</CardTitle>
         <CardDescription>
-          Edite novas configurações para seu dashboard em um clique.
+          Edit new settings for your dashboard in one click.
         </CardDescription>
       </CardHeader>
       <CardContent>

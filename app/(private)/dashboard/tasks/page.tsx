@@ -32,9 +32,9 @@ export default async function Tasks() {
   return (
     <Card className="w-full xl:max-w-[80%]">
       <CardHeader>
-        <CardTitle>Criar Tarefa</CardTitle>
+        <CardTitle>Create Task</CardTitle>
         <CardDescription>
-          Adicone novas tarefas para seu borde em um clique.
+          Add new tasks to your board in one click.
         </CardDescription>
       </CardHeader>
       <FormTask user={user} data={dataProject} />
