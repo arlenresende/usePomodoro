@@ -30,10 +30,25 @@ async function getDataUser({
 }: getDataUserProps) {
   noStore()
 
-  // Buscar usuário existente
-  let user = await prisma.user.findUnique({
+  // Usar upsert ao invés de create - cria se não existir, atualiza se existir
+  const name = `${firstName ?? ''} ${lastName ?? ''}`.trim()
+
+  const user = await prisma.user.upsert({
     where: {
       id,
+    },
+    update: {
+      // Atualiza dados básicos caso o usuário já exista
+      email,
+      name,
+    },
+    create: {
+      id,
+      email,
+      name,
+      timePomorodo: 25,
+      pausePomodoro: 5,
+      urlVideo: 'https://www.youtube.com/watch?v=9hYqOQpYq6w',
     },
     select: {
       id: true,
@@ -41,66 +56,59 @@ async function getDataUser({
     },
   })
 
-  // Create user only if it doesn't exist
-  if (!user) {
-    const name = `${firstName ?? ''} ${lastName ?? ''}`.trim()
-    user = await prisma.user.create({
-      data: {
-        id,
-        email,
-        name,
-        timePomorodo: 25,
-        pausePomodoro: 5,
-        urlVideo: 'https://www.youtube.com/watch?v=9hYqOQpYq6w',
-      },
-      select: {
-        id: true,
-        stripeCustomerId: true,
-      },
-    })
-  }
-
   // Create Stripe customer if it doesn't exist
   if (!user.stripeCustomerId) {
-    const data = await stripe.customers.create({
-      email,
-    })
+    try {
+      const stripeCustomer = await stripe.customers.create({
+        email,
+      })
 
-    await prisma.user.update({
-      where: {
-        id,
-      },
-      data: {
-        stripeCustomerId: data.id,
-      },
-    })
+      await prisma.user.update({
+        where: {
+          id,
+        },
+        data: {
+          stripeCustomerId: stripeCustomer.id,
+        },
+      })
+    } catch (error) {
+      console.error('Error creating Stripe customer:', error)
+      // Não falha a aplicação se o Stripe falhar
+    }
   }
+
+  return user
 }
 
 async function createDefaultProject(userId: string) {
   noStore()
 
-  const projects = await prisma.project.findMany({
+  // Verificar se já existe um projeto
+  const existingProject = await prisma.project.findFirst({
     where: {
       userId,
     },
     select: {
-      name: true,
       id: true,
     },
   })
 
-  if (!projects || projects.length === 0) {
-    const result = await prisma.project.create({
-      data: {
-        name: 'default',
-        description: '',
-        palletColor: '#fff',
-        status: 'active',
-        userId,
-      },
-    })
-    return result
+  // Só cria se não existir nenhum projeto
+  if (!existingProject) {
+    try {
+      await prisma.project.create({
+        data: {
+          name: 'default',
+          description: '',
+          palletColor: '#fff',
+          status: 'active',
+          userId,
+        },
+      })
+    } catch (error) {
+      // Se falhar (ex: condição de corrida), apenas loga e continua
+      console.error('Error creating default project:', error)
+    }
   }
 }
 
@@ -116,27 +124,31 @@ export default async function RootLayout({
     redirect('/')
   }
 
-  // IMPORTANT: Create user BEFORE creating project
-  await getDataUser({
-    email: user.email as string,
-    id: user.id,
-    firstName: user.given_name,
-    lastName: user.family_name,
-    profileImage: user.picture,
-  })
-
-  await createDefaultProject(user.id as string)
+  // Criar/atualizar usuário e projeto em paralelo (mais eficiente)
+  try {
+    await Promise.all([
+      getDataUser({
+        email: user.email as string,
+        id: user.id,
+        firstName: user.given_name,
+        lastName: user.family_name,
+        profileImage: user.picture,
+      }),
+      createDefaultProject(user.id as string),
+    ])
+  } catch (error) {
+    console.error('Error in layout initialization:', error)
+    // Você pode adicionar um redirect para uma página de erro aqui se necessário
+  }
 
   return (
-    <div className="xl:min-h-screen bg-background ">
+    <div className="xl:min-h-screen bg-background">
       <ModalTaskContextProvider>
         <SidebarDashboard />
         <Toaster />
         <div className="p-4 xl:ml-80">
-          <>
-            <HeaderDashboard />
-            <div className="py-12">{children}</div>
-          </>
+          <HeaderDashboard />
+          <div className="py-12">{children}</div>
         </div>
       </ModalTaskContextProvider>
     </div>
