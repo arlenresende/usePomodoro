@@ -144,11 +144,11 @@ function processContentfulRichText(content: any): string {
     if (node.nodeType === 'paragraph')
       return `<p class="mb-4">${node.content?.map(nodeToHtml).join('') || ''}</p>`
     if (node.nodeType === 'heading-1')
-      return `<h1 class="text-3xl font-bold mt-8 mb-4 text-gray-900">${node.content?.map(nodeToHtml).join('') || ''}</h1>`
+      return `<h1 class="text-3xl font-bold mt-8 mb-4 text-primary">${node.content?.map(nodeToHtml).join('') || ''}</h1>`
     if (node.nodeType === 'heading-2')
-      return `<h2 class="text-2xl font-semibold mt-6 mb-3 text-gray-800">${node.content?.map(nodeToHtml).join('') || ''}</h2>`
+      return `<h2 class="text-2xl font-semibold mt-6 mb-3 text-primary">${node.content?.map(nodeToHtml).join('') || ''}</h2>`
     if (node.nodeType === 'heading-3')
-      return `<h3 class="text-xl font-medium mt-4 mb-2 text-gray-700">${node.content?.map(nodeToHtml).join('') || ''}</h3>`
+      return `<h3 class="text-xl font-medium mt-4 mb-2 text-primary">${node.content?.map(nodeToHtml).join('') || ''}</h3>`
     if (node.nodeType === 'unordered-list')
       return `<ul class="mb-4 ml-4">${node.content?.map(nodeToHtml).join('') || ''}</ul>`
     if (node.nodeType === 'ordered-list')
