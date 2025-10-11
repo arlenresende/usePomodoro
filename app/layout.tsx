@@ -7,6 +7,7 @@ import prisma from '@/lib/db'
 import { unstable_noStore as noStore } from 'next/cache'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { AnalyticsClient } from './components/analytics-client'
+
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     type: 'website',
   },
   verification: {
-    google: 'YOUR_VERIFICATION_CODE',
+    google: 'hkqfQ2vWdoZ_yTfKJrqTmpeIWd9htn9yiIY3sFynAg8',
   },
 }
 
