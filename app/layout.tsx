@@ -42,6 +42,9 @@ export const metadata: Metadata = {
     locale: 'en-US',
     type: 'website',
   },
+  verification: {
+    google: 'YOUR_VERIFICATION_CODE',
+  },
 }
 
 async function getData(
