@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://usepomodoro.vercel.app/sitemap.xml
+Sitemap: https://usepomodoro.digital/sitemap.xml
 
 # Disallow admin and private routes
 Disallow: /api/*

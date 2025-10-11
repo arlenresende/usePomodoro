@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description:
       'Apply the Pomodoro technique to increase your productivity and focus on daily tasks.',
     url: '/',
-    siteName: 'Use Pomodoro',
+    siteName: 'usepomodoro',
     locale: 'en-US',
     type: 'website',
   },

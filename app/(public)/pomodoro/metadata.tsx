@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     description:
       'Learn about the Pomodoro Technique, an effective time management method to maximize your productivity and focus.',
     url: '/pomodoro',
-    siteName: 'Use Pomodoro',
+    siteName: 'usepomodoro',
     locale: 'en-US',
     type: 'website',
   },
